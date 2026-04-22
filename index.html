@@ -3,21 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Manager</title>
+    <title>TaskGrid - Modern Excel Task Manager</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- jsPDF for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Task Manager</h1>
-    </header>
+    <div class="background-overlay"></div>
+    
+    <div class="glass-container">
+        <header>
+            <div class="header-left">
+                <h1>TaskGrid</h1>
+                <p>Modern Excel-style Task Management</p>
+            </div>
+            <div class="header-right">
+                <button id="download-pdf" class="btn btn-secondary">
+                    Download PDF
+                </button>
+            </div>
+        </header>
 
-    <section class="task-form">
-        <input type="text" id="task-input" placeholder="Add a new task">
-        <button id="add-task">Add Task</button>
-    </section>
-
-    <section class="task-list">
-    </section>
+        <div class="table-wrapper">
+            <table id="task-table">
+                <thead>
+                    <tr>
+                        <th style="width: 50px;">Done</th>
+                        <th>Task Name</th>
+                        <th>Description</th>
+                        <th style="width: 150px;">Due Date</th>
+                        <th style="width: 120px;">Priority</th>
+                        <th style="width: 80px;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="task-body">
+                    <!-- Tasks will be injected here -->
+                </tbody>
+                <tfoot>
+                    <tr class="add-row">
+                        <td></td>
+                        <td><input type="text" id="new-task-name" placeholder="New Task Name..."></td>
+                        <td><input type="text" id="new-task-desc" placeholder="Add description..."></td>
+                        <td><input type="date" id="new-task-date"></td>
+                        <td>
+                            <select id="new-task-priority">
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button id="add-task-btn" class="btn btn-primary">Add</button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
